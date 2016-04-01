@@ -14,11 +14,12 @@ namespace CouronneAPI.Repositories
     {
      
         public IServiceProvider ServiceProvider { get; set; }
-
+        public ApplicationDbContext Context { get; set; }
 
         public CouronneRepository(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
+            Context = ServiceProvider.GetService<ApplicationDbContext>();
         }
         public int CreateGame(int player1, int player2)
         {
@@ -27,10 +28,7 @@ namespace CouronneAPI.Repositories
 
         public int CreatePlayer(Player player)
         {
-            var context = ServiceProvider.GetService<ApplicationDbContext>();
-
-         
-                context.Players.Add(new DataAccess.Entities.Player()
+            Context.Players.Add(new DataAccess.Entities.Player()
                 {
                     Created = DateTime.Now,
                     FirstName = player.FirstName,
@@ -38,21 +36,17 @@ namespace CouronneAPI.Repositories
                     UserName = player.UserName
                 });
 
-                return context.SaveChanges();
-
-            
+                return Context.SaveChanges();
         }
 
         public List<Player> GetHighscoreList()
         {
-            var list = new List<Player>();
-            list.Add(new Player() { FirstName = "Gustaf", LastName = "Andersson", UserName = "Garfield", Created = DateTime.Now });
-            return list;
+            return Context.Players.Select(player=>new Player {Created = player.Created,FirstName = player.FirstName,Id=player.Id,LastName = player.LastName,UserName = player.UserName}).ToList();
         }
 
         public List<Player> GetHighscoreListByMonth(int month)
         {
-            throw new NotImplementedException();
+            return Context.Players.Where(player=>player.Created.Month == month).Select(player => new Player { Created = player.Created, FirstName = player.FirstName, Id = player.Id, LastName = player.LastName, UserName = player.UserName }).ToList();
         }
 
         public bool SetWinner(int player, int gameId)
