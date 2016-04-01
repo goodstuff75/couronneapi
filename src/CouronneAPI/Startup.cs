@@ -40,9 +40,10 @@ namespace CouronneAPI
 
 
             services.AddEntityFramework()
-       .AddSqlServer()
-       .AddDbContext<ApplicationDbContext>(options =>
-           options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                  .AddSqlServer()
+                  .AddDbContext<ApplicationDbContext>(options =>
+                      options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            services.AddMvc();
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 

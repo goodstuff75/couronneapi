@@ -12,10 +12,14 @@ namespace CouronneAPI.Repositories
 {
     public class CouronneRepository : ICouronneRepository
     {
-        [FromServices]
+     
         public IServiceProvider ServiceProvider { get; set; }
-    
 
+
+        public CouronneRepository(IServiceProvider serviceProvider)
+        {
+            ServiceProvider = serviceProvider;
+        }
         public int CreateGame(int player1, int player2)
         {
             return 1;

@@ -15,11 +15,11 @@ namespace DataAccess
 
         public ApplicationDbContext()
         {
-            //if (!_created)
-            //{
-            //    _created = true;
-            //    Database.EnsureCreated();
-            //}
+            if (!_created)
+            {
+                _created = true;
+                Database.EnsureCreated();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
