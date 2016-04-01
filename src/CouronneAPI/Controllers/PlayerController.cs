@@ -24,10 +24,9 @@ namespace CouronneAPI.Controllers
         }
 
         [Route("create")]
-        [HttpGet]
-        public int CreatePlayer()
+        [HttpPost]
+        public int CreatePlayer(Player player)
         {
-            var player = new Player() { FirstName = "Gustaf", LastName = "Andersson", UserName = "Garfield", Created = DateTime.Now };
             return CouronneRepository.CreatePlayer(player);
         }
         

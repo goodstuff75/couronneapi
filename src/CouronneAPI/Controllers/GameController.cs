@@ -24,13 +24,15 @@ namespace CouronneAPI.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public int CreateGame(int player1, int player2)
         {
             return CouronneRepository.CreateGame(player1,player2);
         }
         
         [HttpGet]
-        public bool SetWinner(int player, int gameId)
+        [Route("setwinner")]
+        public int SetWinner(int player, int gameId)
         {
             return CouronneRepository.SetWinner(player, gameId);
         }

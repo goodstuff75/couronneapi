@@ -8,7 +8,7 @@ namespace CouronneAPI.Repositories.Interfaces
     {
         int CreatePlayer(Player player);
         int CreateGame(int player1, int player2);
-        bool SetWinner(int player, int gameId);
+        int SetWinner(int player, int gameId);
         List<Player> GetHighscoreList();
         List<Player> GetHighscoreListByMonth(int month);
 
