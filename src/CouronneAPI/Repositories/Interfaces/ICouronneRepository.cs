@@ -11,6 +11,6 @@ namespace CouronneAPI.Repositories.Interfaces
         int SetWinner(int player, int gameId);
         List<Player> GetHighscoreList();
         List<Player> GetHighscoreListByMonth(int month);
-
+        Player GetPlayer(int id);
     }
 }

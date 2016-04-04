@@ -25,7 +25,16 @@ namespace CouronneAPI.Controllers
         {
             return string.Format("Player created with id: {0}", CouronneRepository.CreatePlayer(player));
         }
-        
+
+        [Route("getplayerbyid")]
+        [HttpGet]
+        public Player GetPlayersById(int id)
+        {
+            return CouronneRepository.GetPlayer(id);
+        }
+
+
+
         [Route("gethighscorelist")]
         [HttpGet]
         public List<Player> GetPlayersByScore()

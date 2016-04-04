@@ -79,9 +79,34 @@ namespace CouronneAPI.Repositories
            
         }
 
+        private List<Game> GetGamesByMonth(int id, int month)
+        {
+            return
+                Context.Games.Where(game => (game.Player1 == id || game.Player2 == id) && game.PlayDate.Month == month)
+                    .Select(
+                        game =>
+                            new Game
+                            {
+                                Id = game.Id,
+                                PlayDate = game.PlayDate,
+                                Player1 = game.Player1,
+                                Player2 = game.Player2,
+                                Winner = game.Winner
+                            })
+                    .ToList();
+
+
+        }
+
+
         public List<Player> GetHighscoreListByMonth(int month)
         {
-            return Context.Players.Select(player => new Player { Created = player.Created, FirstName = player.FirstName, Id = player.Id, LastName = player.LastName, UserName = player.UserName, Games = GetGames(player.Id), Wins = GetWinsByMonth(player.Id, month) }).OrderByDescending(x => x.Wins).ToList();
+            return Context.Players.Select(player => new Player { Created = player.Created, FirstName = player.FirstName, Id = player.Id, LastName = player.LastName, UserName = player.UserName, Games = GetGamesByMonth(player.Id,month), Wins = GetWinsByMonth(player.Id, month) }).OrderByDescending(x => x.Wins).ToList();
+        }
+
+        public Player GetPlayer(int id)
+        {
+            return Context.Players.Where(player=>player.Id == id).Select(player => new Player { Created = player.Created, FirstName = player.FirstName, Id = player.Id, LastName = player.LastName, UserName = player.UserName, Games = GetGames(player.Id), Wins = GetWins(player.Id) }).FirstOrDefault();
         }
 
         private int GetWinsByMonth(int id, int month)
