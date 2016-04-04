@@ -1,0 +1,41 @@
+﻿@model CouronneAPI.Models.Game
+@{
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1">
+        <title>Create Game</title>
+    </head>
+    <body>
+    <div>
+        <h1>Create game</h1>
+        @using (Html.BeginForm("CreateGame", "Game"))
+        {
+            @Html.LabelFor(x => x.Player1)<br/>
+            @Html.TextBoxFor(x => x.Player1)<br/>
+            @Html.LabelFor(x => x.Player2)<br/>
+            @Html.TextBoxFor(x => x.Player2)<br/><br/>
+
+            <input id="btnSave" type="submit" value="Spara"/>
+
+
+
+        }
+    </div>
+        <div>
+            <h1>Set winner</h1>
+            @using (Html.BeginForm("SetWinner", "Game"))
+            {
+
+            <label>Player</label><br/>
+                <input type="text" name="player" id="player"/><br/>
+                <label>Game ID</label><br />
+             <input type="text" name="gameId" id="gameId" /><br /><br />
+
+                <input id="btnSave" type="submit" value="Spara" />
+
+
+
+            }
+        </div>
+    </body>
+    </html>
+}

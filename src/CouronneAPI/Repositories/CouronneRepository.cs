@@ -43,7 +43,8 @@ namespace CouronneAPI.Repositories
                     Created = DateTime.Now,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
-                    UserName = player.UserName
+                    UserName = player.UserName,
+                    Wins = 0
                 });
 
                 return Context.SaveChanges();
@@ -70,7 +71,8 @@ namespace CouronneAPI.Repositories
                                 Id = game.Id,
                                 PlayDate = game.PlayDate,
                                 Player1 = game.Player1,
-                                Player2 = game.Player2
+                                Player2 = game.Player2,
+                                Winner = game.Winner
                             })
                     .ToList();
 

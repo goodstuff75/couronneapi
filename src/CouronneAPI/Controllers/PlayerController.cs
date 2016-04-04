@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
-using CouronneAPI.Repositories;
 using CouronneAPI.Models;
 using CouronneAPI.Repositories.Interfaces;
 
@@ -18,16 +14,16 @@ namespace CouronneAPI.Controllers
         [FromServices]
         public ICouronneRepository CouronneRepository { get; set; }
 
-        public String Index()
+        public ActionResult Index()
         {
-            return "Hello, this is the player Controller";
+            return View();
         }
 
         [Route("create")]
         [HttpPost]
-        public int CreatePlayer(Player player)
+        public string CreatePlayer(Player player)
         {
-            return CouronneRepository.CreatePlayer(player);
+            return string.Format("Player created with id: {0}", CouronneRepository.CreatePlayer(player));
         }
         
         [Route("gethighscorelist")]

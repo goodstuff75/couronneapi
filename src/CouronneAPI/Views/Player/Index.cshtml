@@ -1,0 +1,27 @@
+﻿@model CouronneAPI.Models.Player
+@{
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1">
+        <title>Create Player</title>
+    </head>
+    <body>
+    <div>
+        <h1>Create player</h1>
+        @using (Html.BeginForm("CreatePlayer", "Player"))
+        {
+            @Html.LabelFor(x => x.UserName)<br />
+            @Html.TextBoxFor(x => x.UserName)<br />
+            @Html.LabelFor(x => x.FirstName)<br/>
+            @Html.TextBoxFor(x => x.FirstName)<br/>
+            @Html.LabelFor(x => x.LastName)<br/>
+            @Html.TextBoxFor(x => x.LastName)<br/><br/>
+
+            <input id="btnSave" type="submit" value="Spara"/>
+
+
+
+        }
+  
+    </body>
+    </html>
+}

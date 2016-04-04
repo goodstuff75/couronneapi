@@ -5,13 +5,12 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using DataAccess;
 
-namespace CouronneAPI.Migrations
+namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160401072826_Initial Migration")]
-    partial class InitialMigration
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -47,6 +46,8 @@ namespace CouronneAPI.Migrations
                     b.Property<string>("LastName");
 
                     b.Property<string>("UserName");
+
+                    b.Property<int>("Wins");
 
                     b.HasKey("Id");
                 });

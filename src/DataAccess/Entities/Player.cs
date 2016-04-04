@@ -15,7 +15,7 @@ namespace DataAccess.Entities
         public virtual string UserName { get; set; }
         public virtual DateTime Created { get; set; }
         public virtual List<Game> Games { get; set; }
-        public int Wins { get; set; }
+        public virtual int Wins { get; set; }
 
     }
 }

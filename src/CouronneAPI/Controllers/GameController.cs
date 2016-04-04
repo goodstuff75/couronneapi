@@ -18,23 +18,24 @@ namespace CouronneAPI.Controllers
         public ICouronneRepository CouronneRepository { get; set; }
 
 
-        public String Index()
+        public ActionResult Index()
         {
-            return "Hello, this is the game Controller";
+            return View();
         }
 
         [HttpPost]
         [Route("create")]
-        public int CreateGame(int player1, int player2)
+        public string CreateGame(int player1, int player2)
         {
-            return CouronneRepository.CreateGame(player1,player2);
+            return string.Format("Game created with id: {0}",CouronneRepository.CreateGame(player1,player2));
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("setwinner")]
-        public int SetWinner(int player, int gameId)
+        public string SetWinner(int player, int gameId)
         {
-            return CouronneRepository.SetWinner(player, gameId);
+            return string.Format("Winner created with id: {0}", CouronneRepository.SetWinner(player, gameId));
+ 
         }
 
    
