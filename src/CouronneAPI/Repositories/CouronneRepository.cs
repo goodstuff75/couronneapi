@@ -109,6 +109,21 @@ namespace CouronneAPI.Repositories
             return Context.Players.Where(player=>player.Id == id).Select(player => new Player { Created = player.Created, FirstName = player.FirstName, Id = player.Id, LastName = player.LastName, UserName = player.UserName, Games = GetGames(player.Id), Wins = GetWins(player.Id) }).FirstOrDefault();
         }
 
+        public Game GetGame(int id)
+        {
+            return Context.Games.Where(game => game.Id == id).Select(
+                        game =>
+                            new Game
+                            {
+                                Id = game.Id,
+                                PlayDate = game.PlayDate,
+                                Player1 = game.Player1,
+                                Player2 = game.Player2,
+                                Winner = game.Winner
+                            })
+                    .FirstOrDefault();
+        }
+
         private int GetWinsByMonth(int id, int month)
         {
             return Context.Games.Where(game=>game.PlayDate.Month == month).Count(game => game.Winner == id);
