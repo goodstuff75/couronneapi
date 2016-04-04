@@ -14,6 +14,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CouronneAPI", "src\Couronne
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataAccess", "src\DataAccess\DataAccess.xproj", "{03C4F6B9-77D9-4603-9CDE-27D4AA7A8F78}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Web", "src\Web\Web.xproj", "{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{03C4F6B9-77D9-4603-9CDE-27D4AA7A8F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C4F6B9-77D9-4603-9CDE-27D4AA7A8F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C4F6B9-77D9-4603-9CDE-27D4AA7A8F78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +41,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CB28FF2A-9D42-441E-99EB-B74EB0937C25} = {202EBC0E-454E-4D4A-818B-B7BCC89D4620}
 		{03C4F6B9-77D9-4603-9CDE-27D4AA7A8F78} = {202EBC0E-454E-4D4A-818B-B7BCC89D4620}
+		{ACEA07CD-D9EA-424F-A420-C93ECDD31E7C} = {202EBC0E-454E-4D4A-818B-B7BCC89D4620}
 	EndGlobalSection
 EndGlobal
