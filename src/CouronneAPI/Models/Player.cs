@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CouronneAPI.Models
 {
@@ -14,7 +12,5 @@ namespace CouronneAPI.Models
         public DateTime Created { get; set; }
         public List<Game> Games { get; set; }
         public int Wins { get; set; }
-
     }
 }
-

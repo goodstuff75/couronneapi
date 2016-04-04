@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CouronneAPI.Repositories;
+using CouronneAPI.Repositories.Interfaces;
+using DataAccess;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using CouronneAPI.Repositories;
-using CouronneAPI.Repositories.Interfaces;
-using Microsoft.Data.Entity;
-using DataAccess;
 
 namespace CouronneAPI
 {
@@ -25,7 +21,7 @@ namespace CouronneAPI
             if (env.IsEnvironment("Development"))
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
+                builder.AddApplicationInsightsSettings(true);
             }
 
             builder.AddEnvironmentVariables();
@@ -37,18 +33,16 @@ namespace CouronneAPI
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddEntityFramework()
-                  .AddSqlServer()
-                  .AddDbContext<ApplicationDbContext>(options =>
-                      options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                .AddSqlServer()
+                .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
             services.AddMvc();
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
-           
+
             services.AddSingleton<ICouronneRepository, CouronneRepository>();
         }
 
@@ -67,8 +61,6 @@ namespace CouronneAPI
             app.UseStaticFiles();
 
             app.UseMvc();
-
-          
         }
 
         // Entry point for the application.
