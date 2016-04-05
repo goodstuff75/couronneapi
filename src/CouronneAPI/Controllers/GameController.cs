@@ -21,14 +21,14 @@ namespace CouronneAPI.Controllers
         [Route("create")]
         public string CreateGame(int player1, int player2)
         {
-            return string.Format("Game created with id: {0}", CouronneRepository.CreateGame(player1, player2));
+            return string.Format("Game created, rows affected: {0}", CouronneRepository.CreateGame(player1, player2));
         }
 
         [HttpPost]
         [Route("setwinner")]
         public string SetWinner(int player, int gameId)
         {
-            return string.Format("Winner created with id: {0}", CouronneRepository.SetWinner(player, gameId));
+            return string.Format("Winner created, rows affected: {0}", CouronneRepository.SetWinner(player, gameId));
         }
     }
 }

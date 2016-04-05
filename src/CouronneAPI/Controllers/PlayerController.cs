@@ -22,7 +22,7 @@ namespace CouronneAPI.Controllers
         [HttpPost]
         public string CreatePlayer(Player player)
         {
-            return string.Format("Player created with id: {0}", CouronneRepository.CreatePlayer(player));
+            return string.Format("Player created, rows affected: {0}", CouronneRepository.CreatePlayer(player));
         }
 
         [Route("getplayerbyid")]
