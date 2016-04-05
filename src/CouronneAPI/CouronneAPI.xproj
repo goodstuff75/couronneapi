@@ -14,6 +14,7 @@
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
     <DevelopmentServerPort>49403</DevelopmentServerPort>
+    <ApplicationInsightsResourceId>/subscriptions/03422f0a-d19b-45d1-a830-161ae1c7ca5a/resourcegroups/Couronne/providers/microsoft.insights/components/couronneapi</ApplicationInsightsResourceId>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
