@@ -20,9 +20,12 @@ namespace CouronneAPI.Controllers
 
         [Route("create")]
         [HttpPost]
-        public string CreatePlayer(Player player)
+        public ActionResult CreatePlayer(Player player)
         {
-            return string.Format("Player created, rows affected: {0}", CouronneRepository.CreatePlayer(player));
+            return CouronneRepository.CreatePlayer(player) == 1
+              ? (ActionResult)new HttpOkResult()
+              : HttpBadRequest();
+            
         }
 
         [Route("getplayerbyid")]

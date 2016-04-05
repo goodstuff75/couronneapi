@@ -1,4 +1,5 @@
-﻿using CouronneAPI.Repositories.Interfaces;
+﻿using System;
+using CouronneAPI.Repositories.Interfaces;
 using Microsoft.AspNet.Mvc;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,16 +20,21 @@ namespace CouronneAPI.Controllers
 
         [HttpPost]
         [Route("create")]
-        public string CreateGame(int player1, int player2)
+        public ActionResult CreateGame(int player1, int player2)
         {
-            return string.Format("Game created, rows affected: {0}", CouronneRepository.CreateGame(player1, player2));
+            return CouronneRepository.CreateGame(player1, player2) == 1
+                ? (ActionResult) new HttpOkResult()
+                : HttpBadRequest();
         }
 
         [HttpPost]
         [Route("setwinner")]
-        public string SetWinner(int player, int gameId)
+        public ActionResult SetWinner(int player, int gameId)
         {
-            return string.Format("Winner created, rows affected: {0}", CouronneRepository.SetWinner(player, gameId));
+            return CouronneRepository.SetWinner(player, gameId) == 1
+             ? (ActionResult)new HttpOkResult() 
+             : HttpBadRequest();
         }
     }
+    
 }
