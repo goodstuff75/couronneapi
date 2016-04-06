@@ -22,10 +22,18 @@ namespace CouronneAPI.Controllers
         [HttpPost]
         public ActionResult CreatePlayer(Player player)
         {
-            return CouronneRepository.CreatePlayer(player) == 1
-              ? (ActionResult)new HttpOkResult()
-              : HttpBadRequest();
-            
+            if (!CouronneRepository.CheckUsernameExist(player.UserName))
+            {
+
+                return CouronneRepository.CreatePlayer(player) == 1
+                    ? (ActionResult) new HttpOkResult()
+                    : HttpBadRequest();
+            }
+            else
+            {
+                return HttpBadRequest();
+            }
+
         }
 
         [Route("getplayerbyid")]
@@ -35,17 +43,24 @@ namespace CouronneAPI.Controllers
             return CouronneRepository.GetPlayer(id);
         }
 
+        [Route("checkusername")]
+        [HttpGet]
+        public bool GetPlayersById(string username)
+        {
+            return CouronneRepository.CheckUsernameExist(username);
+        }
+
 
         [Route("gethighscorelist")]
         [HttpGet]
-        public List<Player> GetPlayersByScore()
+        public IEnumerable<Player> GetPlayersByScore()
         {
             return CouronneRepository.GetHighscoreList();
         }
 
         [Route("gethighscorelistbymonth")]
         [HttpGet]
-        public List<Player> GetPlayersByScoreAndMonth(int month)
+        public IEnumerable<Player> GetPlayersByScoreAndMonth(int month)
         {
             return CouronneRepository.GetHighscoreListByMonth(month);
         }

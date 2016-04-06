@@ -13,5 +13,6 @@ namespace CouronneAPI.Repositories.Interfaces
         List<Player> GetHighscoreListByMonth(int month);
         Player GetPlayer(int id);
         Game GetGame(int id);
+        Boolean CheckUsernameExist(string username);
     }
 }

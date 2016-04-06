@@ -115,6 +115,11 @@ namespace CouronneAPI.Repositories
                 .FirstOrDefault();
         }
 
+        public bool CheckUsernameExist(string username)
+        {
+            return Context.Players.Any(player => player.UserName == username);
+        }
+
         public int SetWinner(int player, int gameId)
         {
             var playedGame = Context.Games.First(game => game.Id == gameId);
